@@ -1,18 +1,21 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class GridPainter extends CustomPainter {
-  static const rows = 10;
-  static const cols = 10;
-
   @override
   void paint(Canvas canvas, Size size) {
     var backgroundPaint = Paint()
       ..style = PaintingStyle.fill
-      ..color = Colors.lime
+      ..color = Colors.amberAccent
       ..isAntiAlias = true;
 
     final screenWidth = size.width;
     final screenHeight = size.height;
+
+    double benchsize = min(screenWidth, screenHeight)/10;
+    var cols = (screenWidth/benchsize).ceil();
+    var rows = (screenHeight/benchsize).ceil();
 
     Rect rect = Rect.fromLTWH(0, 0, screenWidth, screenHeight);
     canvas.drawRect(rect, backgroundPaint);
@@ -22,11 +25,8 @@ class GridPainter extends CustomPainter {
       ..color = Colors.black38
       ..isAntiAlias = true;
 
-    final gridWidth = size.width / cols;
-    final gridHeight = size.height / rows;
-
     for (int row = 0; row < rows; row++) {
-      final y = row * gridHeight;
+      final y = row * benchsize;
       final p1 = Offset(0, y);
       final p2 = Offset(screenWidth, y);
 
@@ -34,7 +34,7 @@ class GridPainter extends CustomPainter {
     }
 
     for (int col = 0; col < cols; col++) {
-      final x = col * gridWidth;
+      final x = col * benchsize;
       final p1 = Offset(x, 0);
       final p2 = Offset(x, screenHeight);
 
