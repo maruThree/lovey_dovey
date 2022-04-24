@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import './screens/home.dart';
+import 'package:lovey_dovey/pages/empty.dart';
+import 'package:lovey_dovey/pages/grid.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Home(),
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      home: GridPage(),
     );
   }
 }
