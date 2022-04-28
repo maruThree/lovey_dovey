@@ -14,8 +14,8 @@ class GridPainter extends CustomPainter {
     final screenHeight = size.height;
 
     double benchsize = min(screenWidth, screenHeight)/10;
-    var cols = (screenWidth/benchsize).ceil();
-    var rows = (screenHeight/benchsize).ceil();
+    int cols = (screenWidth/benchsize).ceil();
+    int rows = (screenHeight/benchsize).ceil();
 
     Rect rect = Rect.fromLTWH(0, 0, screenWidth, screenHeight);
     canvas.drawRect(rect, backgroundPaint);

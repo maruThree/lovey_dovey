@@ -7,10 +7,21 @@ class GridPage extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      body: CustomPaint(
-        child: Container(),
-        painter: GridPainter(),
+      body: GestureDetector(
+        onTapDown: (detail){
+          print("onTapDown: (${detail.localPosition})");
+        },
+        onTapUp: (detail){
+          print("onTapUp(${detail.localPosition})");
+        },
+        onHorizontalDragUpdate: (detail){
+          print("onHorizontalDragUpdate: (${detail.localPosition})");
+        },
+        child: CustomPaint(
+          child: Container(),
+          painter: GridPainter(),
         ),
+      )
     );
   }
 }
